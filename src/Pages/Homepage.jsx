@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import NavbarComponent from "../Components/Navbar";
 import Hero from "../Components/Hero";
 import Events from "../Components/Events";
@@ -18,16 +18,16 @@ const Homepage = () => {
 
   return (
     <>
-    
       <NavbarComponent />
       <GalaxyBackground>
-      <Hero />
+        <main>
+          <Hero scrollY={scrollY} />
+          <Events />
+          <Statistics />
+          <Sponsors />
+        </main>
+        <Footer />
       </GalaxyBackground>
-      <Events />
-      <Statistics />
-      <Sponsors />
-      <Footer />
-      
     </>
   );
 };

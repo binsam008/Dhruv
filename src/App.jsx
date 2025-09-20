@@ -1,14 +1,11 @@
-
-import Homepage from "./Pages/Homepage";
+import Homepage from "./Pages/Homepage.jsx";
 import "./App.css";
-import GalaxyBackground from "./Components/GalaxyBackground";
 
 const App = () => {
   return (
     <div>
-      
-        <Homepage />
-      
+      {/* Main entry point */}
+      <Homepage />
     </div>
   );
 };

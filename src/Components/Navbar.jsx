@@ -1,47 +1,55 @@
-import React, { useState } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import wallELogo from "../assets/Dhruv.png"; // Make sure the path is correct
 
 const NavbarComponent = () => {
   const [expanded, setExpanded] = useState(false);
 
+  const toggleMenu = () => setExpanded(!expanded);
+  const closeMenu = () => setExpanded(false);
+
   return (
-    <Navbar className="navstyl" expand="md" bg="dark" variant="dark" fixed="top" expanded={expanded}>
-      <Container>
-        <Navbar.Brand href="#home">
-          {/* Logo and Text */}
+    <nav className="navbar navbar-expand-lg navstyl fixed-top">
+      <div className="container-fluid">
+        {/* Logo */}
+        <a className="navbar-brand d-flex align-items-center" href="#home">
           <img
-            src={wallELogo}
-            alt="WALL-E Logo"
-            style={{ width: '200px' }}
-            className="d-inline-block align-top me-2"
+            src="https://via.placeholder.com/160x50.png?text=DHRUV+Logo"
+            alt="Dhruv Logo"
+            style={{ width: "160px", height: "auto" }}
+            className="d-inline-block align-top"
           />
-          {/* <span className="text-warning">WALL-E</span> */}
-        </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls="basic-navbar-nav"
-          onClick={() => setExpanded(!expanded)}
+        </a>
+
+        {/* Toggle */}
+        <button
+          className="navbar-toggler border-0"
+          type="button"
+          aria-controls="navbarNav"
+          aria-expanded={expanded}
+          aria-label="Toggle navigation"
+          onClick={toggleMenu}
         >
-          {expanded ? <X /> : <Menu />}
-        </Navbar.Toggle>
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            {["Home", "Events", "Schedule", "Sponsors", "Contact"].map(
-              (item) => (
-                <Nav.Link
-                  key={item}
+          {expanded ? <X color="white" /> : <Menu color="white" />}
+        </button>
+
+        {/* Links */}
+        <div className={`collapse navbar-collapse ${expanded ? "show" : ""}`} id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            {["Home", "Events", "Schedule", "Sponsors", "Contact"].map((item) => (
+              <li className="nav-item" key={item}>
+                <a
+                  className="nav-link mx-2"
                   href={`#${item.toLowerCase()}`}
-                  onClick={() => setExpanded(false)}
+                  onClick={closeMenu}
                 >
                   {item}
-                </Nav.Link>
-              )
-            )}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 };
 
