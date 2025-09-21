@@ -1,0 +1,61 @@
+.carousel-container {
+  perspective: 1000px;
+  width: 600px;
+  margin: 100px auto;
+  position: relative;
+}
+
+.wheel {
+  width: 100%;
+  height: 400px;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  position: relative;
+}
+
+.wheel-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 250px;
+  height: 350px;
+  margin-left: -125px;
+  
+  /* Glass effect */
+  background: rgba(77, 74, 74, 0.2); /* semi-transparent white */
+  backdrop-filter: blur(15px);          /* blur background behind */
+  -webkit-backdrop-filter: blur(15px);  /* for Safari */
+  
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* subtle border */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  
+  transition: transform 1s, opacity 1s;
+  overflow: hidden;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: rgba(168, 168, 168, 0.7);
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.arrow.left {
+  left: -60px;
+}
+
+.arrow.right {
+  right: -60px;
+}
+
+/* Optional: make card text more visible on glass */
+.wheel-card .card-body {
+  color: rgb(0, 0, 0);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}

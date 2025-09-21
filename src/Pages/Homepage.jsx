@@ -6,6 +6,7 @@ import Statistics from "../Components/Statistics";
 import Sponsors from "../Components/Sponsors";
 import Footer from "../Components/Footer";
 import GalaxyBackground from "../Components/GalaxyBackground";
+import About from "../Components/About";
 
 const Homepage = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -22,7 +23,8 @@ const Homepage = () => {
       <GalaxyBackground>
         <main>
           <Hero scrollY={scrollY} />
-          <Events />
+          <About/>
+          <Events  />
           <Statistics />
           <Sponsors />
         </main>

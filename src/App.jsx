@@ -3,10 +3,10 @@ import "./App.css";
 
 const App = () => {
   return (
-    <div>
+    <>
       {/* Main entry point */}
       <Homepage />
-    </div>
+    </>
   );
 };
 
