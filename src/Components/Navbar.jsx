@@ -16,7 +16,7 @@ const Navbar = () => {
             className="text-white font-bold sm:text-lg md:text-xl lg:text-2xl"
             style={{
               fontFamily: "Arial, sans-serif",
-              textShadow: "0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff7f50, 0 0 20px #ff7f50, 0 0 25px #ff7f50, 0 0 30px #ff7f50, 0 0 35px #ff7f50",
+              textShadow: "0 0 5px #ffffffff, 0 0 10px #fff, 0 0 15px #ffffffff, 0 0 20px #ffffffff, 0 0 25px #ffffffff, 0 0 30px #ff7f50, 0 0 35px #ff7f50",
             }}
           >
             DHRUV'25
