@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "../Assets/Dhruv.png"; 
 
-const NavbarComponent = () => {
+const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
 
   const toggleMenu = () => setExpanded(!expanded);
@@ -13,10 +14,9 @@ const NavbarComponent = () => {
         {/* Logo */}
         <a className="navbar-brand d-flex align-items-center" href="#home">
           <img
-            src="https://via.placeholder.com/160x50.png?text=DHRUV+Logo"
+            src={logo}
             alt="Dhruv Logo"
-            style={{ width: "160px", height: "auto" }}
-            className="d-inline-block align-top"
+            className="d-inline-block align-top h-8 sm:h-10 lg:h-12"
           />
         </a>
 
@@ -33,7 +33,7 @@ const NavbarComponent = () => {
         </button>
 
         {/* Links */}
-        <div className={`collapse navbar-collapse ${expanded ? "show" : ""}`} id="navbarNav">
+        <div className={`collapse navbar-collapse ${expanded ? "show bg-black" : ""}`} id="navbarNav">
           <ul className="navbar-nav ms-auto">
             {["Home", "Events", "Schedule", "Sponsors", "Contact"].map((item) => (
               <li className="nav-item" key={item}>
@@ -53,4 +53,4 @@ const NavbarComponent = () => {
   );
 };
 
-export default NavbarComponent;
+export default Navbar;
