@@ -161,7 +161,71 @@ section {
   box-shadow: none !important;
   cursor: pointer;
 }
+/* Add this to your existing CSS file */
 
+/* Mobile-first styling for the nav links wrapper */
+.nav-links-wrapper {
+  position: fixed;
+  top: 89px; /* Same height as your navbar */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 89px); /* Full height of the viewport minus the navbar */
+  background: rgba(17, 17, 17, 0.95); /* Dark, semi-transparent background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 999; /* Below the navbar but above other content */
+}
+
+/* When the menu is active, slide it in */
+.nav-links-wrapper.active {
+  transform: translateX(0);
+}
+
+/* Style the links within the mobile menu */
+.nav-links-wrapper .navbar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  width: 100%;
+}
+
+.nav-links-wrapper .nav-item {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-links-wrapper .nav-item:last-child {
+  border-bottom: none;
+}
+
+.nav-links-wrapper .nav-link {
+  font-size: 1.5rem;
+  padding: 1rem 0;
+}
+
+/* Media Query for larger screens (e.g., desktops) */
+/* The 'navbar-expand-lg' class from Bootstrap should handle this,
+   but we'll add a rule to explicitly hide our custom menu and
+   display the links inline. */
+@media (min-width: 992px) { /* Corresponds to Bootstrap's 'lg' breakpoint */
+  .nav-links-wrapper {
+    position: static;
+    transform: translateX(0);
+    background: transparent;
+    height: auto;
+  }
+
+  .nav-links-wrapper .navbar-nav {
+    flex-direction: row;
+  }
+}
 /* ==============================
    🚀 Hero Section (Home)
    ============================== */
