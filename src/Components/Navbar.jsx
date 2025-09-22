@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "../Assets/Dhruv.png"; 
+import logo from "../assets/Dhruv.png"; 
 
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
