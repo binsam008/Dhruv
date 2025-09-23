@@ -33,6 +33,7 @@ const Hero = () => {
     backgroundImage: `url(${dhruvBg})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    
     // height: '100%', width: '70vw', margitop: '10%' 
     // backgroundAttachment: 'fixed', // Optional: for a parallax effect
   };
