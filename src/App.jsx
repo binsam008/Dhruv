@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Background from "./components/Background";
 import Home from "./sections/Home";
-import Programs from "./sections/Programs";
 import Info from "./sections/Info";
-import CarouselSection from "./sections/CarouselSection";
+import Carousel from "./sections/Carousel";
 import Sponsors from "./sections/Sponsors";
+import About from "./sections/About";
 import Footer from "./components/Footer";
 
 function App() {
@@ -106,17 +106,17 @@ function App() {
           <section id="home">
             <Home />
           </section>
-          <section id="programs">
-            <Programs />
+          <section id="events">
+            <Carousel />
           </section>
           <section id="info">
             <Info />
           </section>
-          <section id="carousel">
-            <CarouselSection />
-          </section>
           <section id="sponsors">
             <Sponsors />
+          </section>
+          <section id="about">
+            <About />
           </section>
         </main>
 
