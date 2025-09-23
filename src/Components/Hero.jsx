@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
-import dhruvBg from "../assets/Dhruv.png"; // Adjust path as needed
+import dhruvBg from "../assets/Dhruv1.png"; // Adjust path as needed
 import logo from "../assets/logo.png"; 
 
 
@@ -42,7 +42,7 @@ const Hero = () => {
     <section 
     
       id="home" 
-      className=" border border-radius-10 m-10 d-flex flex-column justify-content-center text-center text-light position-relative"
+      className=" border-radius-10 m-10 d-flex flex-column justify-content-center text-center text-light position-relative"
       style={{ ...heroStyle }} // Added height, width, and margin for centering
     >
       {/* Background Overlay */}
@@ -54,7 +54,7 @@ const Hero = () => {
             <img style={{width:"30%"}} src={logo} alt="" />
         </div>
         <p className="lead">
-          Dhruv 2025 is a three-day Tech-Culture-Innovation Festival at MES College of Engineering and Technology in Kunnukara, set to attract over 3,000 daily attendees, including students from more than 50 colleges across Kerala, industry professionals, and influencers. The event uniquely blends technical activities like hackathons and robotics showcases with cultural competitions such as Choreo Night and a Music Band Competition, alongside live concerts and fashion walks. As a Title Sponsor, your brand will gain exclusive branding rights, prominent logo placement, and a direct channel to engage with a tech-savvy Gen-Z audience, promising over 100,000 digital impressions and a significant presence in Kerala's dynamic youth and innovation ecosystem.<br />
+          Dhruv 2025 is a three-day Tech-Culture-Innovation Festival at MES College of Engineering and Technology. With 3,000+ daily attendees from 50+ colleges, it blends hackathons, cultural competitions, and live entertainment. As Title Sponsor, your brand gains exclusive visibility and powerful digital reach to a Gen-Z audience.<br />
           <span className="text-warning">October 09-11, 2025</span>
         </p>
 
