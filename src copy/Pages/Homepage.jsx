@@ -23,8 +23,8 @@ const Homepage = () => {
       <GalaxyBackground>
         <main>
           <Hero scrollY={scrollY} />
-          <About/>
-          <Events  />
+          <About />
+          <Events />
           <Statistics />
           <Sponsors />
         </main>

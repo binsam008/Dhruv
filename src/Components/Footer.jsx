@@ -1,9 +1,7 @@
-import React from "react";
-
-const Footer = () => (
-  <footer id="contact" className="py-4 bg-dark text-light text-center">
-    <p>© 2025 WALL-E TechFest. All rights reserved.</p>
-  </footer>
-);
-
-export default Footer;
+export default function Footer() {
+  return (
+    <footer className="bg-black/80 text-gray-400 py-6 text-center mt-10">
+      <p>© {new Date().getFullYear()} DHRUV'25. All Rights Reserved.</p>
+    </footer>
+  );
+}
