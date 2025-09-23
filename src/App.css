@@ -14,11 +14,15 @@ body {
 }
 
 section {
+  align-items: center;
   color: #fff;
   padding: 60px 20px;
-  margin: 40px auto;
-  width: 100%;
-  max-width: 1200px;
+  margin:auto ;
+  margin-top: 7%;
+  
+  width: 70%;
+  height: 20%;
+  /* max-width: 1200px; */
   z-index: 1000;
 }
 

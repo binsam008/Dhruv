@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "../assets/logo.png"; 
 
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
@@ -10,17 +11,13 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navstyl fixed-top">
       <div className="container-fluid">
-        {/* Logo Text */}
+        {/* Logo */}
         <a className="navbar-brand d-flex align-items-center" href="#home">
-          <span
-            className="text-white font-bold sm:text-lg md:text-xl lg:text-2xl"
-            style={{
-              fontFamily: "Arial, sans-serif",
-              textShadow: "0 0 5px #ffffffff, 0 0 10px #fff, 0 0 15px #ffffffff, 0 0 20px #ffffffff, 0 0 25px #ffffffff, 0 0 30px #ff7f50, 0 0 35px #ff7f50",
-            }}
-          >
-            DHRUV'25
-          </span>
+          <img
+            src={logo}
+            alt="Dhruv Logo"
+            className="d-inline-block align-top h-8 sm:h-10 lg:h-12"
+          />
         </a>
 
         {/* Toggle */}
@@ -35,8 +32,8 @@ const Navbar = () => {
           {expanded ? <X color="white" /> : <Menu color="white" />}
         </button>
 
-        {/* Links: Use a conditional class for visibility */}
-        <div className={`nav-links-wrapper ${expanded ? "active" : ""}`}>
+        {/* Links */}
+        <div className={`collapse navbar-collapse ${expanded ? "show bg-black" : ""}`} id="navbarNav">
           <ul className="navbar-nav ms-auto">
             {["Home", "Events", "Schedule", "Sponsors", "Contact"].map((item) => (
               <li className="nav-item" key={item}>
