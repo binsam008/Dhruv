@@ -3,7 +3,12 @@ import { Button } from "react-bootstrap";
 import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
 
 const Hero = () => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
     const targetDate = new Date("2025-10-09T00:00:00"); // event start
@@ -27,7 +32,10 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="min-vh-100 d-flex flex-column justify-content-center text-center text-light position-relative">
+    <section
+      id="home"
+      className="min-vh-100 d-flex flex-column justify-content-center text-center text-light position-relative"
+    >
       <div className="mb-6">
         <h1 className="display-1 fw-bold text-warning">DHRUV'25</h1>
         <p className="lead">
@@ -47,8 +55,12 @@ const Hero = () => {
 
         {/* Buttons */}
         <div className="d-flex justify-content-center gap-3 mb-3">
-          <Button variant="warning" size="lg">Register Now</Button>
-          <Button variant="outline-warning" size="lg">View Events</Button>
+          <Button variant="warning" size="lg">
+            Register Now
+          </Button>
+          <Button variant="outline-warning" size="lg">
+            View Events
+          </Button>
         </div>
 
         {/* Socials */}

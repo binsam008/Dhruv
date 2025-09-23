@@ -3,8 +3,6 @@ import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 
-
-
 const cards = [
   { id: 1, title: "Card 1", text: "This is the first card" },
   { id: 2, title: "Card 2", text: "This is the second card" },
@@ -18,17 +16,20 @@ export default function Events() {
   const handleLeft = () => setRotation(rotation + 90); // rotate wheel left
   const handleRight = () => {
     console.log("right button clicked");
-    
-    setRotation(rotation - 90);} // rotate wheel right
+
+    setRotation(rotation - 90);
+  }; // rotate wheel right
 
   return (
     <div className="carousel-container">
-      <Button className="arrow left"  onClick={handleLeft}>
+      <Button className="arrow left" onClick={handleLeft}>
         <BsArrowLeft size={30} />
       </Button>
 
-      <div className="wheel" style={{ transform: `translateZ(-300px) rotateY(${rotation}deg)` }}>
-
+      <div
+        className="wheel"
+        style={{ transform: `translateZ(-300px) rotateY(${rotation}deg)` }}
+      >
         {cards.map((card, index) => {
           const angle = index * 90; // 4 cards, 360/4 = 90deg
           return (

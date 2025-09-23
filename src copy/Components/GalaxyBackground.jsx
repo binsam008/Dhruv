@@ -40,8 +40,12 @@ const GalaxyBackground = ({ children }) => {
   });
 
   const generateInitialStars = () => {
-    const numberOfStars = Math.floor((window.innerWidth * window.innerHeight) / 10000);
-    setStars(Array.from({ length: numberOfStars }, (_, i) => createFallingStar(i)));
+    const numberOfStars = Math.floor(
+      (window.innerWidth * window.innerHeight) / 10000,
+    );
+    setStars(
+      Array.from({ length: numberOfStars }, (_, i) => createFallingStar(i)),
+    );
   };
 
   const generateInitialMeteors = () => {
