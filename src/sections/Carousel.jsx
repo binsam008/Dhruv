@@ -63,7 +63,6 @@ const ScheduleCarousel = () => {
   }, []);
 
   const handleDetailsClick = (day) => {
-    // Convert "Day 1" to "/day1", "Day 2" to "/day2", etc.
     const route = `/day${day.split(" ")[1]}`;
     navigate(route);
   };

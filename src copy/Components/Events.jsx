@@ -13,12 +13,12 @@ const cards = [
 export default function Events() {
   const [rotation, setRotation] = useState(0);
 
-  const handleLeft = () => setRotation(rotation + 90); // rotate wheel left
+  const handleLeft = () => setRotation(rotation + 90);
   const handleRight = () => {
     console.log("right button clicked");
 
     setRotation(rotation - 90);
-  }; // rotate wheel right
+  };
 
   return (
     <div className="carousel-container">
@@ -31,7 +31,7 @@ export default function Events() {
         style={{ transform: `translateZ(-300px) rotateY(${rotation}deg)` }}
       >
         {cards.map((card, index) => {
-          const angle = index * 90; // 4 cards, 360/4 = 90deg
+          const angle = index * 90;
           return (
             <Card
               key={card.id}
