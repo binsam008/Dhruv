@@ -17,3 +17,11 @@
   0% { opacity: 0.2; transform: scale(1); }
   100% { opacity: 1; transform: scale(1.5); }
 } */
+
+::-webkit-scrollbar {
+  display: none;
+}
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

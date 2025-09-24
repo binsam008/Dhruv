@@ -10,9 +10,8 @@ const NavbarComponent = () => {
   const navItems = [
     { name: "Home", href: "#home", icon: "🏠" },
     { name: "Events", href: "#events", icon: "🌌" },
-    { name: "Schedule", href: "#schedule", icon: "📅" },
     { name: "Sponsors", href: "#sponsors", icon: "🤝" },
-    { name: "Contact", href: "#contact", icon: "📞" },
+    { name: "About", href: "#about", icon: "ℹ️" },
   ];
 
   const handleNavClick = (href) => {
