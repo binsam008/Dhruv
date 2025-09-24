@@ -1,13 +1,4 @@
-import { useEffect, useState } from "react";
-import Navbar from "./components/Navbar";
 import Background from "./components/Background";
-// import Home from "./sections/Home";
-import Info from "./sections/Info";
-import Carousel from "./sections/Carousel";
-import Sponsors from "./sections/Sponsors";
-import About from "./sections/About";
-import Footer from "./components/Footer";
-import IVA from "./assets/images/eva.png";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DayPrograms from "./pages/Day1";
 import Home from "./pages/Home";

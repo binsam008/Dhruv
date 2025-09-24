@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../assets/css/carousel.css";
-import { title } from "framer-motion/client";
+
 const scheduleData = [
   {
     day: "Day 1",
@@ -45,14 +46,14 @@ const scheduleData = [
       { time: "", title: "Food Fest" },
       { time: "4:00 PM - 8:00 PM", title: "Concert" },
       { time: "", title: "Online Gaming" },
-      {time:"", title:"Autoshow"},
-      
+      { time: "", title: "Autoshow" },
     ],
   },
 ];
 
 const ScheduleCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -60,6 +61,12 @@ const ScheduleCarousel = () => {
     }, 6000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleDetailsClick = (day) => {
+    // Convert "Day 1" to "/day1", "Day 2" to "/day2", etc.
+    const route = `/day${day.split(" ")[1]}`;
+    navigate(route);
+  };
 
   return (
     <section className="relative py-24 bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white min-h-screen flex flex-col items-center overflow-hidden">
@@ -101,19 +108,16 @@ const ScheduleCarousel = () => {
                   isActive
                     ? "translate-x-0 scale-100 opacity-100 rotate-y-0 z-10"
                     : offset > 0
-                      ? "translate-x-[110%] scale-75 opacity-50 rotate-y-30"
-                      : "-translate-x-[110%] scale-75 opacity-50 -rotate-y-30"
+                    ? "translate-x-[110%] scale-75 opacity-50 rotate-y-30"
+                    : "-translate-x-[110%] scale-75 opacity-50 -rotate-y-30"
                 }`}
                 style={{
                   zIndex: 10 - absOffset,
                   transformOrigin: "center center",
                 }}
               >
-                <div className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-xl border border-cyan-500/40 rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-cyan-500/50 group min-h-[450px] sm:min-h-[500px] md:min-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-neon-green scrollbar-track-neon-magenta" 
-                
-                >
+                <div className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-xl border border-cyan-500/40 rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-cyan-500/50 group min-h-[450px] sm:min-h-[500px] md:min-h-[600px] overflow-y-auto custom-scrollbar">
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
                   <div className="absolute inset-0 border-2 border-cyan-400/30 rounded-2xl animate-orbit" />
 
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-200 mb-2 drop-shadow-lg group-hover:text-cyan-100 transition-colors duration-300">
@@ -126,18 +130,26 @@ const ScheduleCarousel = () => {
                     {day.events.map((event, idx) => (
                       <li
                         key={idx}
-                        className="bg-white/10 p-4 rounded-lg transform hover:-translate-y-1 hover:shadow-cyan-400/30 transition-all duration-300"
+                        className="bg-white/10 p-4 rounded-lg transform hover:-translate-y-1 hover:shadow-cyan-400/30 transition-all duration-300 flex justify-between items-center"
                       >
-                        <p className="font-semibold text-cyan-100 text-sm sm:text-base">
-                          {event.time} - {event.title}
-                        </p>
-                        {event.details && (
-                          <ul className="list-disc list-inside mt-2 text-cyan-100/80 text-xs sm:text-sm">
-                            {event.details.map((detail, i) => (
-                              <li key={i}>{detail}</li>
-                            ))}
-                          </ul>
-                        )}
+                        <div>
+                          <p className="font-semibold text-cyan-100 text-sm sm:text-base">
+                            {event.time} - {event.title}
+                          </p>
+                          {event.details && (
+                            <ul className="list-disc list-inside mt-2 text-cyan-100/80 text-xs sm:text-sm">
+                              {event.details.map((detail, i) => (
+                                <li key={i}>{detail}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                        <button
+                          className="bg-cyan-500 text-black font-semibold py-1 px-3 rounded-lg hover:bg-cyan-400 transition-colors"
+                          onClick={() => handleDetailsClick(day.day)}
+                        >
+                          Details
+                        </button>
                       </li>
                     ))}
                   </ul>

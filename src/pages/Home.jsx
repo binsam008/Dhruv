@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import Background from "../components/Background";
 import HomeSection from "../sections/Home";
 import Info from "../sections/Info";
 import Carousel from "../sections/Carousel";
