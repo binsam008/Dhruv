@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../assets/css/carousel.css";
+import { title } from "framer-motion/client";
 const scheduleData = [
   {
     day: "Day 1",
@@ -34,6 +35,18 @@ const scheduleData = [
         title: "Other Activities",
         details: ["AR/VR", "Offline Games", "Soppy Football", "Food Stall"],
       },
+    ],
+  },
+  {
+    day: "Day 3",
+    date: "11th October 2025",
+    events: [
+      { time: "9:00 AM - 12:00 AM", title: "Closing Ceremony" },
+      { time: "", title: "Food Fest" },
+      { time: "4:00 PM - 8:00 PM", title: "Concert" },
+      { time: "", title: "Online Gaming" },
+      {time:"", title:"Autoshow"},
+      
     ],
   },
 ];
@@ -96,7 +109,9 @@ const ScheduleCarousel = () => {
                   transformOrigin: "center center",
                 }}
               >
-                <div className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-xl border border-cyan-500/40 rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-cyan-500/50 group min-h-[450px] sm:min-h-[500px] md:min-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-neon-green scrollbar-track-neon-magenta">
+                <div className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-xl border border-cyan-500/40 rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-cyan-500/50 group min-h-[450px] sm:min-h-[500px] md:min-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-neon-green scrollbar-track-neon-magenta" 
+                
+                >
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
                   <div className="absolute inset-0 border-2 border-cyan-400/30 rounded-2xl animate-orbit" />
