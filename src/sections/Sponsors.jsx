@@ -1,6 +1,104 @@
 import React from "react";
 
-const sponsors = ["TechCorp", "InnovateAI", "RoboTech", "FutureCode"];
+// Split sponsors into two categories with image paths
+const mainSponsors = [
+  { name: "TechCorp", image: "/assets/sponsors/techcorp-logo.png" },
+  { name: "InnovateAI", image: "/assets/sponsors/innovateai-logo.png" }
+]; // Top tier sponsors
+
+const otherSponsors = [
+  { name: "RoboTech", image: "/assets/sponsors/robotech-logo.png" },
+  { name: "FutureCode", image: "/assets/sponsors/futurecode-logo.png" },
+  { name: "DataFlow", image: "/assets/sponsors/dataflow-logo.png" },
+  { name: "CloudNext", image: "/assets/sponsors/cloudnext-logo.png" }
+]; // Additional sponsors
+
+const SponsorCard = ({ sponsor, idx, isMain = false }) => (
+  <div
+    className={`group relative transform hover:scale-105 transition-all duration-500 ease-out`}
+    style={{
+      animationDelay: `${idx * 0.2}s`,
+    }}
+  >
+    <div className={`relative bg-gradient-to-br from-gray-900/40 via-black/60 to-gray-900/40 backdrop-blur-xl border border-cyan-500/30 rounded-3xl shadow-2xl hover:shadow-cyan-500/30 transition-all duration-500 overflow-hidden ${
+      isMain ? 'p-12 min-h-[280px]' : 'p-8 min-h-[220px]'
+    }`}>
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
+
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500">
+        <div className="absolute top-4 left-4 right-4 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse" />
+        <div
+          className="absolute bottom-4 left-4 right-4 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-pulse"
+          style={{ animationDelay: "0.5s" }}
+        />
+        <div
+          className="absolute top-4 bottom-4 left-4 w-px bg-gradient-to-b from-transparent via-pink-400 to-transparent animate-pulse"
+          style={{ animationDelay: "0.25s" }}
+        />
+        <div
+          className="absolute top-4 bottom-4 right-4 w-px bg-gradient-to-b from-transparent via-cyan-400 to-transparent animate-pulse"
+          style={{ animationDelay: "0.75s" }}
+        />
+      </div>
+
+      <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-cyan-400/50 transition-all duration-500" />
+      <div className="absolute -inset-1 rounded-3xl border border-purple-500/20 animate-spin-slow opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+      <div className="relative z-10 text-center flex flex-col justify-center h-full">
+        {/* Image Container */}
+        <div className={`mx-auto mb-6 rounded-full bg-gradient-to-br from-cyan-400/20 to-purple-500/20 backdrop-blur-sm border-2 border-cyan-400/30 group-hover:border-cyan-400/60 flex items-center justify-center overflow-hidden transition-all duration-500 ${
+          isMain ? 'w-24 h-24' : 'w-20 h-20'
+        }`}>
+          <img
+            src={sponsor.image}
+            alt={`${sponsor.name} logo`}
+            className={`object-contain transition-all duration-500 group-hover:scale-110 group-hover:brightness-110 ${
+              isMain ? 'w-16 h-16' : 'w-12 h-12'
+            }`}
+            onError={(e) => {
+              // Fallback to initial letter if image fails to load
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'flex';
+            }}
+          />
+          {/* Fallback initial letter */}
+          <div 
+            className={`hidden items-center justify-center w-full h-full text-black font-bold bg-gradient-to-br from-cyan-400 to-purple-500 ${
+              isMain ? 'text-2xl' : 'text-xl'
+            }`}
+          >
+            {sponsor.name.charAt(0)}
+          </div>
+        </div>
+
+        <h3 className={`font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-300 group-hover:from-white group-hover:to-cyan-200 transition-all duration-300 ${
+          isMain ? 'text-3xl md:text-4xl' : 'text-2xl md:text-3xl'
+        }`}>
+          {sponsor.name}
+        </h3>
+
+        <div className={`mt-4 text-cyan-200/60 tracking-widest ${
+          isMain ? 'text-base' : 'text-sm'
+        }`}>
+          ── COSMIC PARTNER ──
+        </div>
+      </div>
+
+      {[...Array(6)].map((_, i) => (
+        <div
+          key={`card-particle-${idx}-${i}`}
+          className="absolute w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-60 animate-float-particle"
+          style={{
+            top: `${20 + Math.random() * 60}%`,
+            left: `${10 + Math.random() * 80}%`,
+            animationDelay: `${i * 0.3}s`,
+            animationDuration: `${3 + Math.random() * 2}s`,
+          }}
+        />
+      ))}
+    </div>
+  </div>
+);
 
 const Sponsors = () => {
   return (
@@ -14,6 +112,7 @@ const Sponsors = () => {
         `,
       }}
     >
+      {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(100)].map((_, i) => (
           <div
@@ -74,6 +173,7 @@ const Sponsors = () => {
         />
       </div>
 
+      {/* Header */}
       <div className="text-center mb-20 z-10 relative">
         <div className="relative inline-block">
           <h2 className="text-5xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 animate-glow-pulse mb-4">
@@ -92,66 +192,29 @@ const Sponsors = () => {
         </p>
       </div>
 
-      <div className="w-full max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
-          {sponsors.map((sponsor, idx) => (
-            <div
-              key={sponsor}
-              className="group relative transform hover:scale-105 transition-all duration-500 ease-out"
-              style={{
-                animationDelay: `${idx * 0.2}s`,
-              }}
-            >
-              <div className="relative bg-gradient-to-br from-gray-900/40 via-black/60 to-gray-900/40 backdrop-blur-xl border border-cyan-500/30 rounded-3xl p-8 shadow-2xl hover:shadow-cyan-500/30 transition-all duration-500 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
+      <div className="w-full max-w-7xl relative z-10 px-6">
+        {/* Main Sponsors Section - Horizontal Layout */}
+        <div className="grid grid-cols-2 gap-8 mb-16">
+          {mainSponsors.map((sponsor, idx) => (
+            <SponsorCard key={sponsor.name} sponsor={sponsor} idx={idx} isMain={true} />
+          ))}
+        </div>
 
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500">
-                  <div className="absolute top-4 left-4 right-4 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse" />
-                  <div
-                    className="absolute bottom-4 left-4 right-4 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-pulse"
-                    style={{ animationDelay: "0.5s" }}
-                  />
-                  <div
-                    className="absolute top-4 bottom-4 left-4 w-px bg-gradient-to-b from-transparent via-pink-400 to-transparent animate-pulse"
-                    style={{ animationDelay: "0.25s" }}
-                  />
-                  <div
-                    className="absolute top-4 bottom-4 right-4 w-px bg-gradient-to-b from-transparent via-cyan-400 to-transparent animate-pulse"
-                    style={{ animationDelay: "0.75s" }}
-                  />
-                </div>
+        {/* Decorative Separator */}
+        <div className="flex items-center justify-center mb-16">
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div>
+          <div className="mx-8 flex items-center space-x-2">
+            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+            <div className="w-1 h-1 bg-purple-400 rounded-full animate-pulse" style={{animationDelay: '0.3s'}}></div>
+            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" style={{animationDelay: '0.6s'}}></div>
+          </div>
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent via-purple-500/30 to-transparent"></div>
+        </div>
 
-                <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-cyan-400/50 transition-all duration-500" />
-                <div className="absolute -inset-1 rounded-3xl border border-purple-500/20 animate-spin-slow opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="relative z-10 text-center">
-                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center text-black font-bold text-xl group-hover:animate-pulse">
-                    {sponsor.charAt(0)}
-                  </div>
-
-                  <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-300 group-hover:from-white group-hover:to-cyan-200 transition-all duration-300">
-                    {sponsor}
-                  </h3>
-
-                  <div className="mt-4 text-cyan-200/60 text-sm tracking-widest">
-                    ── COSMIC PARTNER ──
-                  </div>
-                </div>
-
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={`card-particle-${idx}-${i}`}
-                    className="absolute w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-60 animate-float-particle"
-                    style={{
-                      top: `${20 + Math.random() * 60}%`,
-                      left: `${10 + Math.random() * 80}%`,
-                      animationDelay: `${i * 0.3}s`,
-                      animationDuration: `${3 + Math.random() * 2}s`,
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
+        {/* Other Sponsors Section - Horizontal Layout */}
+        <div className="grid grid-cols-4 gap-6">
+          {otherSponsors.map((sponsor, idx) => (
+            <SponsorCard key={sponsor.name} sponsor={sponsor} idx={idx + mainSponsors.length} isMain={false} />
           ))}
         </div>
       </div>
@@ -246,20 +309,6 @@ const Sponsors = () => {
           }
         }
 
-        @keyframes glow-pulse-delayed {
-          0%,
-          100% {
-            text-shadow:
-              0 0 20px rgba(147, 51, 234, 0.5),
-              0 0 40px rgba(147, 51, 234, 0.3);
-          }
-          50% {
-            text-shadow:
-              0 0 30px rgba(147, 51, 234, 0.8),
-              0 0 60px rgba(147, 51, 234, 0.5);
-          }
-        }
-
         @keyframes spin-slow {
           from {
             transform: rotate(0deg);
@@ -313,9 +362,6 @@ const Sponsors = () => {
         }
         .animate-glow-pulse {
           animation: glow-pulse 3s ease-in-out infinite;
-        }
-        .animate-glow-pulse-delayed {
-          animation: glow-pulse-delayed 3s ease-in-out infinite 1.5s;
         }
         .animate-spin-slow {
           animation: spin-slow 20s linear infinite;

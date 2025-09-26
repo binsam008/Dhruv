@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import HomeSection from "../sections/Home";
 import Info from "../sections/Info";
 import Carousel from "../sections/Carousel";
+import Guests from "../sections/GuestSpeakersPage"; // Add this import
 import Sponsors from "../sections/Sponsors";
 import About from "../sections/About";
 import Footer from "../components/Footer";
@@ -34,6 +35,7 @@ const Home = () => {
       clearTimeout(scrollTimer);
     };
   }, []);
+
   return (
     <div className="relative text-white overflow-x-hidden min-h-screen">
       <Navbar />
@@ -75,6 +77,9 @@ const Home = () => {
         </section>
         <section id="events">
           <Carousel />
+        </section>
+        <section id="guests">
+          <Guests />
         </section>
         {/* <section id="info">
           <Info />
