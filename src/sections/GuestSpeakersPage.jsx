@@ -2,16 +2,16 @@ import React from "react";
 
 // Import your guest images at the top
 import rajeevImg from "../assets/images/rajeev.png";
- import satheesan from "../assets/images/satheesan.png"; 
- import rameshImg from "../assets/images/ramesh.png";
- import kuncheriaImg from "../assets/images/kuncheria.png";
+import satheesan from "../assets/images/satheesan.png"; 
+import rameshImg from "../assets/images/ramesh.png";
+import kuncheriaImg from "../assets/images/kuncheria.png";
 
 const guestData = [
   {
     id: 1,
     name: "SRI ADV P RAJEEV",
     title: "HON'BLE MINISTER OF INDUSTRIES, LAW AND COURT, KERALA",
-    image:rajeevImg , 
+    image: rajeevImg, 
     gradientColors: "from-green-400 via-blue-500 to-purple-600"
   },
   {
@@ -37,62 +37,74 @@ const guestData = [
   }
 ];
 
-const GuestCard = ({ guest }) => (
-  <div className="relative h-[500px] overflow-hidden shadow-2xl">
+const GuestCard = ({ guest, index }) => (
+  <div className="relative h-[500px] overflow-hidden shadow-2xl group cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105">
     {/* Background gradient matching the image */}
-    <div className={`absolute inset-0 bg-gradient-to-br ${guest.gradientColors} opacity-90`} />
+    <div className={`absolute inset-0 bg-gradient-to-br ${guest.gradientColors} opacity-90 transition-opacity duration-500 group-hover:opacity-70`} />
     
-    {/* Content container */}
-    <div className="relative h-full flex flex-col">
-      {/* Top text section */}
-      <div className="p-4 pb-0 flex-shrink-0">
-        <div className="text-white">
-          <h2 className="text-lg font-bold mb-1 leading-tight tracking-wide">
-            {guest.name}
-          </h2>
-          <div className="text-xs font-medium leading-tight opacity-90">
-            {guest.title.split(' ').map((word, index) => (
-              <div key={index} className="block">
-                {word}
-              </div>
-            ))}
+    {/* Image section - full height, aligned to borders */}
+    <div className="relative h-full p-2">
+      <img 
+        src={guest.image} 
+        alt={guest.name}
+        className={`w-full h-full object-contain ${
+          index % 2 === 0 ? 'object-left-bottom' : 'object-right-bottom'
+        }`}
+        style={{
+          objectPosition: index % 2 === 0 ? 'left bottom' : 'right bottom'
+        }}
+        onError={(e) => {
+          // Fallback to placeholder if image fails to load
+          e.target.style.display = 'none';
+          e.target.nextSibling.style.display = 'flex';
+        }}
+      />
+      {/* Fallback placeholder */}
+      <div className="w-full h-full bg-gray-300/20 backdrop-blur-sm border border-white/10 flex items-center justify-center" style={{display: 'none'}}>
+        <div className="text-white/60 text-center">
+          <div className="w-12 h-12 mx-auto mb-2 bg-white/20 rounded-full flex items-center justify-center">
+            <span className="text-lg font-bold">
+              {guest.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+            </span>
           </div>
-        </div>
-      </div>
-      
-      {/* Image section - takes up remaining space */}
-      <div className="flex-1 flex items-end justify-center px-4 pb-4">
-        <div className="relative w-full">
-          {/* Actual image */}
-          <div className="w-full h-[320px] rounded-lg overflow-hidden">
-            <img 
-              src={guest.image} 
-              alt={guest.name}
-              className="w-full h-full object-cover object-top"
-              onError={(e) => {
-                // Fallback to placeholder if image fails to load
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'flex';
-              }}
-            />
-            {/* Fallback placeholder */}
-            <div className="w-full h-full bg-gray-300/20 backdrop-blur-sm border border-white/10 flex items-center justify-center" style={{display: 'none'}}>
-              <div className="text-white/60 text-center">
-                <div className="w-12 h-12 mx-auto mb-2 bg-white/20 rounded-full flex items-center justify-center">
-                  <span className="text-lg font-bold">
-                    {guest.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                  </span>
-                </div>
-                <p className="text-xs opacity-75">Guest Photo</p>
-              </div>
-            </div>
-          </div>
+          <p className="text-xs opacity-75">Guest Photo</p>
         </div>
       </div>
     </div>
     
-    {/* Subtle overlay for depth */}
-    <div className="absolute inset-0 bg-black/5" />
+    {/* Default name overlay (visible when not hovered) */}
+    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 via-black/40 to-transparent group-hover:opacity-0 transition-opacity duration-500">
+      <h2 className="text-white text-lg font-bold text-center drop-shadow-lg">
+        {guest.name}
+      </h2>
+    </div>
+    
+    {/* Hover overlay with glassmorphism */}
+    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out backdrop-blur-sm">
+      {/* Glassmorphism card for details */}
+      <div className="absolute bottom-0 left-0 right-0 p-6 bg-white/10 backdrop-blur-md border-t border-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
+        <div className="text-white">
+          <h2 className="text-xl font-bold mb-3 leading-tight tracking-wide drop-shadow-lg">
+            {guest.name}
+          </h2>
+          <div className="text-sm font-medium leading-relaxed opacity-90 drop-shadow-md">
+            {guest.title}
+          </div>
+        </div>
+        
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+        <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-white/40 rounded-full"></div>
+      </div>
+    </div>
+    
+    {/* Hover glow effect */}
+    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+      <div className={`absolute inset-0 bg-gradient-to-br ${guest.gradientColors} opacity-20 blur-xl`}></div>
+    </div>
+    
+    {/* Subtle border on hover */}
+    <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/20 transition-all duration-500 rounded-lg"></div>
   </div>
 );
 
@@ -126,13 +138,16 @@ const Guests = () => {
         <p className="text-cyan-200/60 text-lg max-w-2xl mx-auto">
           Distinguished guests who will share their expertise and insights
         </p>
+        <p className="text-cyan-300/40 text-sm mt-2 italic">
+          Hover over the cards to reveal speaker details
+        </p>
       </div>
 
       {/* Guests Grid - Horizontal Layout */}
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-4 gap-0">
-          {guestData.map((guest) => (
-            <GuestCard key={guest.id} guest={guest} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {guestData.map((guest, index) => (
+            <GuestCard key={guest.id} guest={guest} index={index} />
           ))}
         </div>
       </div>
